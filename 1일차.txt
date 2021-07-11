@@ -1,0 +1,29 @@
+
+ 1일차 - 1~
+
+
+ # JDBC란 무엇인가?
+
+DBC : Database Connectivity.
+JDBC Java Database Connectivity : 자바에서 API로써 DATABASE를 쉽게 바꿀 수 있도록 도와준다.
+JDBC Driver : DB마다 다른 Driver를 가지고 있고, 내가 작성한 코드와 DB를 연결하는데 도움을 준다.
+
+JDBC 절차.
+1. Driver 로드하기.
+2. 연결 생성하기.
+3. 문장 실행하기.
+4. 결과집합 사용하기.
+
+
+ # DBMS와 JDBC Driver 준비하기.
+
+설치.
+Oracle, Oracle JDBC Driver 다운로드.
+
+이클립스.
+project 생성 -> 마우스 오른쪽 build path -> configure build path -> Add External Jars ( 외부 자료 추가 ) 
+-> 다운받은 Oracle JDBC Driver 추가 -> Apply.
+
+확인.
+Referenced Libraries에 JDBC Driver파일이름이 추가되었는지 확인.
+
