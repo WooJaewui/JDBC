@@ -1,0 +1,67 @@
+
+ 2일차 - 3~4강
+
+
+ # JDBC 기본 코드의 이해.
+
+JDBC 순서.
+1. Class.forName("oracle.jdbc.driver.OracleDriver"); 
+2. Connection con = DriverManager.getConnection(...);
+3. Statement st = con.createStatement( );
+4. ResultSet rs = st.executeQuery(sql);
+5. rs.next( );
+6. String title = rs.getString("title");
+
+원리.
+1번이 실행되면 driver가 램에 올라간다.
+2번이 실행되면 연결이 이루어진다.
+3번이 실행되면 client에게 받은 요청을 sql에게 전달한다.
+4번이 실행되면 요청에 대한 data를 준비한다.
+5번이 실행되면 커서가 가르키는 레코드 한 줄을 반환한다. 
+6번이 실행되면 title column에 있는 data를 String으로 반환한다.
+5 ~ 6번을 반복하면서 내가 원하는 데이터를 다 뽑아 올 수 있다.
+
+용어설명.
+Befor Of File ( BOF ) : data 파일의 시작점이다.
+End Of File ( EOF ) : data 파일의 끝지점이다.
+
+
+
+ # 쿼리 실행하기 실습.
+
+JDBC 순서.
+1. Class.forName("oracle.jdbc.driver.OracleDriver");
+2. Connection con = DriverManager.getConnection(url, "id", "pwd");
+3. Statment st = con.createStatement( );
+4. ResultSet rs = st.ExecuteQuery(sql);
+
+종료순서.
+rs.close( );
+st.close( );
+con.close( );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
