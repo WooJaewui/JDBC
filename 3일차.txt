@@ -1,0 +1,60 @@
+
+ 3일차 - 5 ~ 10강
+
+
+ # 실습.
+
+rs.next( ) : 데이터가 끝이나면 false를 반환한다.
+
+while( rs.next( ) ) { 
+     String data1 = rs.getString( "Column" );
+}
+
+데이터를 커서가 있는 부분부터 끝까지 반복하면서 모두 출력할 수 있다.
+
+
+
+ # SQL을 잘해야 하는 이유.
+
+SQL에서 데이터를 가져올때 필터링, 정렬, 그룹화 등을 모두 처리하는게 좋다.
+( Java에서 처리하는 것은 효율적이지 못하다 - 자바는 UI 레이아웃만 처리 )
+
+
+
+ # SQL에 요청하기.
+
+ResultSet rs = st.executeQuery("sql");   : select를 통해 data를 얻을때 사용.
+int rs = st.executeUpdate("sql");         : create, update, delete를 sql에 요청할때 사용.
+                                                  몇개의 row가 영향을 받았는지 int값으로 반환한다.
+
+
+Insert / update / delete 요청하기.
+
+Class.forName("oracle.jdbc.driver.OracleDriver");
+Connection con = DriverManager.getConnection;
+PrepareStatement st = con.prepareStatement("sql");
+st.setString( 1, "data" );
+...
+st.executeUpdate( );
+
+
+주의사항.
+Statement과정에서 sql을 요청하면 뒤에 execute부분에서 sql을 요청하면 안된다.
+( 2중 요청 금지 )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
