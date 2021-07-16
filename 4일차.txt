@@ -1,0 +1,58 @@
+
+ 4일차 - 11~13강.
+
+
+ # Java로 Read하기.
+
+String url = 실제url주소 ;
+String sql = " select * from table ";
+
+Class.forName( "oracle.jdbc.driver.OracleDriver" );
+Connection con = DriverManager.getConnection( url, "id', "pwd" );
+Statement st = con.createStatemnet( );
+ResultSet rs = st.executeQuery( sql );
+
+while( rs.next( ) ) {
+      String id = rs.getString( "Column1" );    
+      String var = rs.getString( "column2" );
+      .....
+      System.out.printf( "ID =%s, column2=%s, ....", Column1, Column2, ... );
+}
+
+re.close( );
+st.close( );
+con.close( );
+
+
+
+ # Java로 Create, Update, Delete 하기.
+
+String url = 실제url주소 ;
+String sql = " Update table set column1=? , column2=? ... where id=? ";
+String sql2 = " Insert into table column1, column2, ... values( ?, ?, ?,... )";
+String sql3 = " Delete from table where id=? ";
+
+Class.forName( "oracle.jdbc.drive.OracleDriver" );
+Connection con = DriverManager.getConnection( url, "id", "pwd" );
+PrepareStatement st = con.prepareStatement( sql );
+
+st.getString( index1, var1 );
+st.getString( index2, var2 );
+
+st.executeUpdate( );
+
+st.close( );
+con.close( );
+
+System.out.prinln( "성공시 출력할 문장" );
+
+
+
+
+
+
+
+
+
+
+
