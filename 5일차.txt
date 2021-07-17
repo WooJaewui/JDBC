@@ -1,0 +1,104 @@
+
+ 5일차 - 14~25강.
+
+
+ # CRUD를 담당하는 Service 생성하기.
+
+설명.
+하나의 클래스 안에 CRUD하는 메소드를 만들어서 사용한다. 
+데이터를 저장하는 변수 클래스를 하나 생성해준다.
+반복되는 변수는 private로 클래스의 전역변수로 사용한다. 
+class.forName,  Connection, Statement는 메소드 안에 각각 만들어서 사용해야된다.
+
+
+READ
+
+1. 데이터를 담는 클래스를 생성한다. 생성자 + get, set method 만들기.
+2. List<DataClass> list = new ArrayList<DataClass>( );
+3. sql에서 얻은 data를 변수에 담고, DataClass( int data1, String data2, ... ) 생성자로 담아준다.
+4. list.add( DataClass ) 로 data를 list에 담아준다.
+
+
+Create / Update
+
+1. 메소드의 매개변수로 DataClass를 받는다.
+2. DataClass.get( ) 메소드를 통해 변수로 정리한다.
+3. st.setString( )을 통해 원하는 data를 C/U한다.
+4. st.executeUpdate( )를 실행한다. ( commit )
+
+
+delete
+
+1. 메소드의 매개변수로 ID값 등 where절에 사용할 부분을 받는다.
+2. st.setInt( index, id )를 통해 where절을 구현한다.
+3. st.executeUpdate( )를 실행한다. ( commit )
+
+
+
+ # 사용자 인터페이스 붙이기.
+
+1. 조작과 관련된 console 클래스와 실행할 console_main 클래스를 만든다.
+2. console 클래스 안에 위에서 구현한 CRUD를 사용해서 data를 CRUD할 수 있도록 구현한다.
+3. 구현한 console 클래스를 console_main 클래스에 객체생성해서 사용한다.
+
+
+
+ # 페이징 SQL 만들기.
+
+SQL
+SELECT * FROM ( 
+SELECT ROWNUM NUM, T.* FROM (
+SELECT * FROM ORDER BY COLUMN DESC ) T 
+)
+WHERE NUM BETWEEN A AND B;
+
+Java
+PrepareStatement st = con.prepareStatement( sql );
+st.setString( 1, A );
+st.setString( 2, B );
+ResultSet rs = st.executeQuery( );
+
+
+
+ # 페이징 SQL을 VIEW로 만들기.
+
+SQL
+CREATE VIEW VIEW_NAME
+AS
+SELECT * FROM (
+SELECT ROWNUM ROW, T.* FROM (
+SELECT * FROM ORDER BY COLUMN DESC ) T
+);
+
+Java
+String SQL = "SELECT * FROM VIEW_NAME WHERE NUM BETWEEN A AND B ";
+
+
+
+ # 전역변수.
+
+꼭 공유해야 되는 변수만 ( 공유 해도 문제가 없는 변수 ) 전역변수로 사용한다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
